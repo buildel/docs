@@ -2,9 +2,9 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Introduction
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Here's a documentation for stunning AI automation app
 
 ## Getting Started
 
@@ -23,7 +23,7 @@ Generate a new Docusaurus site using the **classic template**.
 
 The classic template will automatically be added to your project after you run the command:
 
-```bash
+```bash copy
 npm init docusaurus@latest my-website classic
 ```
 

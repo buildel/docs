@@ -70,6 +70,12 @@ const config: Config = {
           label: "Documentation",
         },
         {
+          type: "docSidebar",
+          sidebarId: "tutorialSidebar",
+          position: "left",
+          label: "API Reference",
+        },
+        {
           href: "https://github.com/facebook/docusaurus",
           label: "GitHub",
           position: "right",
