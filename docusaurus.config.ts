@@ -4,7 +4,8 @@ import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
   title: "Buildel",
-  tagline: "Dinosaurs are cool",
+  tagline:
+    "Boost Efficiency & Automate Tasks: Build Your AI Dream Team in Minutes without Writing a Line of Code.",
   favicon: "img/b-favicon.ico",
 
   // Set the production url of your site here
@@ -40,13 +41,7 @@ const config: Config = {
           editUrl:
             "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
-        },
+
         theme: {
           customCss: "./src/css/custom.css",
         },
@@ -74,9 +69,10 @@ const config: Config = {
           sidebarId: "tutorialSidebar",
           position: "left",
           label: "API Reference",
+          href: "/api-reference",
         },
         {
-          href: "https://github.com/facebook/docusaurus",
+          href: "https://github.com/elpassion/buildel",
           label: "GitHub",
           position: "right",
         },
