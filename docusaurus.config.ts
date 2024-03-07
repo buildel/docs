@@ -40,12 +40,10 @@ const config: Config = {
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl:
             "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
-          docItemComponent: "@theme/ApiItem", // derived from docusaurus-theme-openapi-docs
+          // docItemComponent: "@theme/ApiItem", // derived from docusaurus-theme-openapi-docs
         },
         blog: {
           showReadingTime: true,
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -55,19 +53,6 @@ const config: Config = {
   ],
 
   plugins: [
-    () => ({
-      name: "resolve-react",
-      configureWebpack() {
-        return {
-          resolve: {
-            alias: {
-              // assuming root node_modules is up from "./packages/<your-docusaurus>
-              react: path.resolve("../../node_modules/react"),
-            },
-          },
-        };
-      },
-    }),
     "docusaurus-plugin-sass",
     [
       "docusaurus-plugin-openapi-docs",
