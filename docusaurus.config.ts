@@ -37,14 +37,13 @@ const config: Config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       {
         api: {
-          path: "openapi.json",
+          path: "https://api.buildel.ai/api/openapi",
           routeBasePath: "api",
+          apiLayoutComponent: "@theme/ApiPage",
+          apiItemComponent: "@theme/ApiItem",
         },
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
-          docItemComponent: "@theme/ApiItem", // derived from docusaurus-theme-openapi-docs
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -58,18 +57,15 @@ const config: Config = {
     [
       "docusaurus-plugin-openapi-docs",
       {
-        id: "api", // plugin id
-        docsPluginId: "classic", // id of plugin-content-docs or preset for rendering docs
+        id: "api",
+        docsPluginId: "default",
         config: {
           workflows: {
-            // the <id> referenced when running CLI commands
-            specPath: "openapi.json", // path to OpenAPI spec, URLs supported
-            outputDir: "api/workflows", // output directory for generated files
+            specPath: "https://api.buildel.ai/api/openapi",
+            outputDir: "api/workflows",
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
-              // optional, instructs plugin to generate sidebar.js
-              // groupPathsBy: "tag", // group sidebar items by operation "tag"
             },
           },
         },
