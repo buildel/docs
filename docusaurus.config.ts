@@ -33,17 +33,18 @@ const config: Config = {
 
   presets: [
     [
-      "classic",
+      "docusaurus-preset-openapi",
       /** @type {import('@docusaurus/preset-classic').Options} */
       {
+        api: {
+          path: "openapi.json",
+          routeBasePath: "api",
+        },
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl:
             "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
-          // docItemComponent: "@theme/ApiItem", // derived from docusaurus-theme-openapi-docs
-        },
-        blog: {
-          showReadingTime: true,
+          docItemComponent: "@theme/ApiItem", // derived from docusaurus-theme-openapi-docs
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -57,13 +58,13 @@ const config: Config = {
     [
       "docusaurus-plugin-openapi-docs",
       {
-        id: "openapi", // plugin id
+        id: "api", // plugin id
         docsPluginId: "classic", // id of plugin-content-docs or preset for rendering docs
         config: {
           workflows: {
             // the <id> referenced when running CLI commands
             specPath: "openapi.json", // path to OpenAPI spec, URLs supported
-            outputDir: "docs/api/workflows", // output directory for generated files
+            outputDir: "api/workflows", // output directory for generated files
             sidebarOptions: {
               groupPathsBy: "tag",
               categoryLinkSource: "tag",
@@ -75,16 +76,10 @@ const config: Config = {
       },
     ],
   ],
-  themes: ["docusaurus-theme-openapi-docs"],
 
   themeConfig: {
     // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",
-    docs: {
-      sidebar: {
-        hideable: true,
-      },
-    },
     navbar: {
       logo: {
         alt: "My Site Logo",
@@ -97,17 +92,7 @@ const config: Config = {
           position: "left",
           label: "Documentation",
         },
-        {
-          type: "dropdown",
-          label: "API Reference",
-          position: "left",
-          items: [
-            {
-              label: "API Zoo",
-              to: "/api/workflows",
-            },
-          ],
-        },
+        { to: "/api", label: "API", position: "left" },
         {
           href: "https://github.com/elpassion/buildel",
           label: "GitHub",

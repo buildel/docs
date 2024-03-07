@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.3",
   "info": {
-    "title": "API de Exemplo",
+    "title": "Buildel API",
     "version": "1.0.0"
   },
   "servers": [
@@ -12,8 +12,22 @@
   "paths": {
     "/workflows": {
       "post": {
-        "tags": ["Authentication"],
-        "summary": "Something",
+        "tags": ["Workflows"],
+        "summary": "Create workflow",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/workflows/{workflowId}": {
+      "patch": {
+        "tags": ["Workflows"],
+        "summary": "Update workflow",
         "responses": {
           "200": {
             "description": "OK"
