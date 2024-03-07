@@ -1,0 +1,25 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "API de Exemplo",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.buildel.ai"
+    }
+  ],
+  "paths": {
+    "/workflows": {
+      "post": {
+        "tags": ["Authentication"],
+        "summary": "Something",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}
