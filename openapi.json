@@ -13,10 +13,26 @@
     "/workflows": {
       "post": {
         "tags": ["Workflows"],
+        "description": "Allow to create new workflow",
         "summary": "Create workflow",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
-          "200": {
-            "description": "OK"
+          "201": {
+            "description": "Workflow created"
           },
           "400": {
             "description": "Bad request"
