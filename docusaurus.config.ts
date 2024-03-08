@@ -4,7 +4,7 @@ import type * as Preset from "@docusaurus/preset-classic";
 import * as path from "path";
 
 const config: Config = {
-  title: "Buildel",
+  title: "Buildel Docs",
   tagline:
     "Boost Efficiency & Automate Tasks: Build Your AI Dream Team in Minutes without Writing a Line of Code.",
   favicon: "img/b-favicon.ico",
