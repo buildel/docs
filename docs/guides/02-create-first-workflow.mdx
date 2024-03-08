@@ -5,22 +5,44 @@ description: Learn how to work with workflows
 
 # Create first workflow
 
-Learn how to work with workflows
+Learn how to work with workflows.
 
 ## Prerequisites
 
-To create workflows, you must first have an organization set up in Buildel. If you haven't created one yet, please refer to our [previous guide](01-first-organization.mdx) on how to do so.
+To create workflow, you must first have an organization set up in Buildel. If you haven't created one yet, please refer to our [previous guide](01-first-organization.mdx) on how to do so.
 
 ## Create a new workflow
 
+If you haven't set up any workflows yet, you'll be greeted with the screen shown below. As you can see, you have a couple of choices: you can start a workflow from scratch or select one of our predefined [templates](/docs/category/templates).
+
 ![Image](/mdx-assets/guides/create-first-workflow/workflow-list.webp)
 
-### Go to workflows page
+To create a workflow from scratch, simply click on **Build a new AI workflow**. A sidebar will appear on the right with a field for the workflow name. Enter "My First Workflow" and then click submit.
+
+Once you've successfully submitted, you'll be redirected to the main page of your workflow. Here, you can manage your workflow by adjusting its settings and more.
+
+## Add our first blocks
+
+On the right side, there's a sidebar displaying block categories. Buildel offers a variety of block types for numerous interesting functions.
+Let's start with a basic workflow to see how straightforward it is. From the sidebar, select the [text-input](/docs/blocks/text-input.mdx) block and add it by clicking the **plus** icon or dragging it into your workflow board.
+
+Repeat the process with the [text-output](/docs/blocks/text-output.mdx) block. Once added, we can connect the text-input and text-output blocks together to complete the setup.
+
+:::tip
+
+In Buildel, blocks can have various input/output types. For now, you have to remember that you can connect blocks together only if their inputs/outputs shape is the same and the colors differ.
+
+:::
 
 
+![Image](/mdx-assets/guides/create-first-workflow/add-input-output.webp)
 
-### Initiate new workflow
+Now, you can initiate your workflow. Click the **Run** button, and if the label of the button changes to *Stop*, it means the workflow is properly configured and doesn't have any issues.
 
-Now you have option to either create workflow from one of templates or create new workflow from scratch. For this tutorial we will create new workflow from scratch.
+Additionally, you'll notice that the connection between blocks will start animating, indicating the flow of information from one block to another.
 
-![Image](./images/create-workflow.png)
+You can now input a value into the text-input block and click **Send**. The workflow will manage the connection between blocks and transmit the data to the text-output.
+
+## Add LLM to our workflow
+
+...
