@@ -15,17 +15,9 @@ const config: Config = {
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: "buildel", // Usually your GitHub org/user name.
-  projectName: "docs", // Usually your repo name.
-
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: "en",
     locales: ["en"],
@@ -44,8 +36,7 @@ const config: Config = {
         },
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl:
-            "https://github.com/buildel/docs/blob/main/",
+          editUrl: "https://github.com/buildel/docs/blob/main/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
