@@ -199,9 +199,52 @@ import TabItem from "@theme/TabItem";
 
   </TabItem>
   <TabItem value="embedding" label="Embedding">
-    Embedding
+    ## Embed Buildel in your website
+
+      This snippet allows for a straightforward integration, offering your visitors the convenience of engaging with Buildel Chat directly on your site.
+
+      <Tabs>
+          <TabItem value='react' label='React'>
+              ```jsx
+              <iframe
+                  src="https://app.buildel.ai/webchats/34/pipelines/95?alias=latest"
+                  width="600"
+                  height="600"
+                  title="chat"
+              />
+              ```
+          </TabItem>
+          <TabItem value='html' label='HTML'>
+              ```html
+              <iframe
+                  src="https://app.buildel.ai/webchats/34/pipelines/95?alias=latest"
+                  width="600"
+                  height="600"
+                  title="chat"
+              ></iframe>
+              ```
+          </TabItem>
+      </Tabs>
+
   </TabItem>
   <TabItem value="openai" label="OpenAI API">
-    OpenAI Api
+    ## Connect to our custom API
+
+      This setup will authenticate your requests and allow your chatbot to communicate with our API.
+
+      ```ts {4-5}
+      import OpenAI from "openai";
+
+      const openai = new OpenAI({
+        baseURL: "https://api.buildel.ai/api",
+        defaultHeaders: { Authorization: `Bearer ${process.env.BUILDEL_API_KEY}` } ,
+      };
+
+      const completion = await openai.chat.completions.create({
+        messages: [{ role: "system", content: "You are a helpful assistant." }],
+        model: "gpt-3.5-turbo",
+      });
+      ```
+      > Ensure you replace the baseURL with **our** API's URL and include **your API key** as the `Bearer` token in the `Authorization` header.
   </TabItem>
 </Tabs>
