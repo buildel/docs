@@ -8,7 +8,9 @@ import TabItem from "@theme/TabItem";
 <Tabs>
   <TabItem value="sdk" label="Client SDK">
     ## Installation
-      Begin by installing the necessary Buildel packages using npm. This initial step equips you with the tools required for seamless integration with our API.
+      Begin by installing the necessary Buildel packages using package manager of your choice.
+
+      This initial step equips you with the tools required for seamless integration with our API.
     <Tabs>
       <TabItem value="npm">
           ```bash title="~ terminal"
@@ -26,6 +28,7 @@ import TabItem from "@theme/TabItem";
           ```
       </TabItem>
     </Tabs>
+      ---
 
       ## Server-side configuration
       <Tabs>
@@ -59,6 +62,7 @@ import TabItem from "@theme/TabItem";
               ```
           </TabItem>
       </Tabs>
+      ---
 
       ## Initialize client SDK
       ```tsx title="BuildelSocket.tsx" {4-6}
@@ -72,6 +76,7 @@ import TabItem from "@theme/TabItem";
         }, [])
       }
       ```
+      ---
 
       ## Connect websockets
 
@@ -103,6 +108,7 @@ import TabItem from "@theme/TabItem";
           }, [])
       }
       ```
+      ---
       ## Initialize run instance
 
       Initialize a run instance with your `workflow ID` to manage events for specific blocks, handle errors, and perform other workflow operations.
