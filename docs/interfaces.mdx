@@ -199,8 +199,15 @@ import TabItem from "@theme/TabItem";
 
   </TabItem>
   <TabItem value="embedding" label="Embedding">
-    ## Embed Buildel in your website
+      ## Website chatbot
+      Share your Chatbot through url or embed into page.
 
+      ### Inputs and outputs
+      First of all, you should pick **input**, **chat** and the **output** which you'd like to include in in chatbot on your website. It is important especially when one workflow contains multiple block or even flows.
+
+      ![Input and outputs](../static/mdx-assets/embedding.png)
+
+      ### Embed on website
       This snippet allows for a straightforward integration, offering your visitors the convenience of engaging with Buildel Chat directly on your site.
 
       <Tabs>
@@ -228,7 +235,7 @@ import TabItem from "@theme/TabItem";
 
   </TabItem>
   <TabItem value="openai" label="OpenAI API">
-    ## Connect to our custom API
+      ## Connect to our custom API
 
       This setup will authenticate your requests and allow your chatbot to communicate with our API.
 
@@ -246,5 +253,6 @@ import TabItem from "@theme/TabItem";
       });
       ```
       > Ensure you replace the baseURL with **our** API's URL and include **your API key** as the `Bearer` token in the `Authorization` header.
+
   </TabItem>
 </Tabs>
