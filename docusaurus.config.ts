@@ -100,7 +100,7 @@ const config: Config = {
     },
     prism: {
       theme: prismThemes.github,
-      darkTheme: prismThemes.oceanicNext,
+      darkTheme: prismThemes.palenight,
     },
   } satisfies Preset.ThemeConfig,
 };

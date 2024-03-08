@@ -61,7 +61,7 @@ import TabItem from "@theme/TabItem";
       </Tabs>
 
       ## Initialize client SDK
-      ```tsx title="index.tsx" {4-6}
+      ```tsx title="BuildelSocket.tsx" {4-6}
       export const BuildelProvider = ({ children }: PropsWithChildren) => {
         useEffect(() => {
             async function connect() {
@@ -77,12 +77,12 @@ import TabItem from "@theme/TabItem";
 
       Establish a connection to our websocket server to engage in real-time bidirectional communication. This connection is vital for real-time messaging and data interchange.
 
-      ```tsx title="index.tsx" {8-10}
+      ```tsx title="BuildelSocket.tsx" {8-10}
       export const BuildelProvider = ({ children }: PropsWithChildren) => {
           const [buildel, setBuildel] = useState<BuildelSocket | null>(null);
 
           useEffect(() => {
-              async function connect() {
+              const connect = async () => {
                   const organizationId = 27;
                   const authUrl = "/buildel/auth";
                   const buildel = new BuildelSocket(organizationId, { authUrl });
@@ -105,7 +105,97 @@ import TabItem from "@theme/TabItem";
       ```
       ## Initialize run instance
 
-      Initialize a run instance with your workflow ID to manage events for specific blocks, handle errors, and perform other workflow operations.
+      Initialize a run instance with your `workflow ID` to manage events for specific blocks, handle errors, and perform other workflow operations.
+
+      ```tsx title="BuildelSocket.tsx"
+      export function useBuildelSocket() {
+          const context = useContext(BuildelContext);
+
+          if (!context) {
+            throw new Error("useBuildelSocket must be used within a BuildelProvider");
+          }
+
+          return context;
+      }
+
+      interface UsePipelineRunProps {
+          onBlockOutput?: (
+              blockId: string,
+              outputName: string,
+              payload: unknown
+          ) => void;
+          onBlockStatusChange?: (blockId: string, isWorking: boolean) => void;
+          runId: number;
+      }
+
+      export const usePipelineRun = ({ runId, onBlockOutput, onBlockStatusChange }: UsePipelineRunProps) => {
+          const { buildel } = useBuildelSocket();
+          const runRef = useRef<BuildelRun>();
+
+          useEffect(() => {
+              if (!buildel) return;
+
+              const run = buildel.run(runId, {
+                  onBlockOutput: (
+                      blockId: string,
+                      outputName: string,
+                      payload: unknown
+                  ) => {
+                      console.log(
+                          `Output from block ${blockId}, output ${outputName}:`,
+                          payload
+                      );
+
+                      onBlockOutput?.(blockId, outputName, payload);
+                  },
+                  onBlockStatusChange: (blockId: string, isWorking: boolean) => {
+                      console.log(`Block ${blockId} is ${isWorking ? "working" : "stopped"}`);
+
+                      onBlockStatusChange?.(blockId, isWorking);
+                  },
+                  onStatusChange: (status: BuildelRunStatus) => {
+                      console.log(`Status changed: ${status}`);
+
+                      setStatus(status);
+                  },
+                  onBlockError: (blockId: string, errors: string[]) => {
+                      console.log(`Block ${blockId} errors: ${errors}`);
+                  },
+              });
+
+              runRef.current = run;
+          }, [buildel]);
+
+      }
+      ```
+      ---
+
+      ## Send data to channel
+
+      After starting your run instance, send data payloads to a specified block in your channel. This action triggers the processing within your run.
+
+      ```tsx title="BuildelSocket.tsx"
+      await run.start();
+      run.push('topic:input', 'sample payload')
+      ```
+      ### Options
+      #### `topic`: *string*
+      This is a combination of `organizationId` and `pipelineId` separated by a colon.
+      In this example: `27:1:input`, `27` is the `organizationId` and `1` is the `pipelineId`.
+      Any name to identify query. Should be always suffixed with `:input`. Example: `chat:input`
+
+      #### `payload`: *any*
+      Payload can be anything from string to complex object or even array of object. You name it.
+
+      ---
+
+      ## Close connection
+
+      When your interactions with the API conclude, ensure you properly close the socket connection. This step is critical for releasing resources and securely disconnecting from the server.
+
+      ```tsx title="BuildelSocket.tsx"
+      await buildel.disconnect();
+      ```
 
   </TabItem>
   <TabItem value="embedding" label="Embedding">
