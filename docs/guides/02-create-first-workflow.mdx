@@ -5,7 +5,7 @@ description: Learn how to work with workflows
 
 # Create first workflow
 
-Learn how to work with workflows.
+Create your first AI workflow!
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ Once you've successfully submitted, you'll be redirected to the main page of you
 
 ## Add our first blocks
 
-On the right side, there's a sidebar displaying block categories. Buildel offers a variety of block types for numerous interesting functions.
+On the right side, there's a sidebar displaying block categories. Buildel offers a variety of block types for numerous interesting operations.
 Let's start with a basic workflow to see how straightforward it is. From the sidebar, select the [text-input](/docs/blocks/text-input.mdx) block and add it by clicking the **plus** icon or dragging it into your workflow board.
 
 Repeat the process with the [text-output](/docs/blocks/text-output.mdx) block. Once added, we can connect the text-input and text-output blocks together to complete the setup.
@@ -43,6 +43,75 @@ Additionally, you'll notice that the connection between blocks will start animat
 
 You can now input a value into the text-input block and click **Send**. The workflow will manage the connection between blocks and transmit the data to the text-output.
 
-## Add LLM to our workflow
+<video controls width="100%" autoPlay loop>
+  <source type="video/webm" src="/mdx-assets/guides/create-first-workflow/run-simple-workflow.webm"/>
+</video>
 
-...
+
+Cool, right? You might think it's neat to see the blocks in action, but nothing extraordinary happened here. And you'd be right...
+
+Let's change that and add some AI magic to our first workflow...
+
+
+## Add LLM to our workflow!
+
+Find the [chat](/docs/blocks/chat.mdx) block in the sidebar and add it between the two blocks you've already placed. You might notice the chat block has more input/output types, but we'll delve into that later.
+
+![Image](/mdx-assets/guides/create-first-workflow/llm-block.webp)
+
+If you try to run the workflow immediately, you'll encounter an error message in the top-right corner indicating that the workflow has errors and cannot be run.
+This is accurate. As you'll observe, the chat block has several errors that need to be resolved before we can proceed...
+
+To do so, click on the gear icon on the chat block. This action will open the sidebar with the block's configuration options.
+
+
+:::note
+
+There is a lot of options that might seem overwhelming at first. For now, let's concentrate only on the essential settings that are crucial for getting the workflow working.
+
+:::
+
+
+<video controls width="100%" autoPlay loop>
+  <source type="video/webm" src="/mdx-assets/guides/create-first-workflow/configure-llm.webm"/>
+</video>
+
+
+The first step we took was to add the API Key. Since we're using the OpenAI model, specifically **GPT-3.5 Turbo Preview**, we needed to add our OpenAI API Key to Buildel and select it in this configuration.
+
+:::tip
+
+In Buildel, you can easily switch between LLM models from different providers. The only requirement is to provide the API Key obtained from the chosen provider. We talk more about it [here](/docs/secrets).
+
+:::
+
+Next, we filled out the **System Message**, which you can consider for now as instructions for the Chat. It tells the Chat how to react or interpret user prompts.
+
+Lastly, we have the **Prompt Template**. In this section, you can either type your questions directly to the chat or, like we demonstrated in the video, choose from the text inputs connected to the chat.
+The editor will suggest available inputs as you start typing.
+
+
+:::note
+
+Take note that the format for providing input to the chat prompt template is simply the name of the block followed by the name of the output, like this: *name_of_the_block:name_of_the_output*.
+
+:::
+:::tip
+
+Try to remove the connection between text-input and chat block. The color in the prompt-template editor will change to red if the chat block does not have that input connected.
+
+:::
+
+## Try it out!
+
+Now, let's go ahead and run our workflow.
+
+<video controls width="100%" autoPlay loop>
+  <source type="video/webm" src="/mdx-assets/guides/create-first-workflow/run-llm-workflow.webm"/>
+</video>
+
+Cool, right? With just a few clicks, you've created your first fully working AI assistant that can now be [used](/docs/interfaces.mdx) in your applications. I encourage you to play around with the configuration and see how the chat functions.
+
+For more useful information about the chat block, check out [here](/docs/blocks/chat.mdx).
+
+
