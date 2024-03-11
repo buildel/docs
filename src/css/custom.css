@@ -19,7 +19,7 @@
   --ifm-navbar-background-color: #f1f1f1 !important;
   --ifm-footer-background-color: #f1f1f1 !important;
   --banner-background: #eaeaea;
-  --text: #1a1a1a;
+  --black: #1a1a1a;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -36,7 +36,7 @@
   --ifm-navbar-background-color: #121212 !important;
   --ifm-footer-background-color: #121212 !important;
   --banner-background: #010101;
-  --text: #dcdcdc;
+  --black: #dcdcdc;
 }
 
 html[data-theme="dark"] .navbar .navbar__logo {
@@ -67,7 +67,7 @@ html[data-theme="light"] .navbar {
 }
 
 .hero__title {
-  color: var(--text);
+  color: var(--black);
 }
 
 .hero__subtitle {
@@ -78,11 +78,16 @@ html[data-theme="light"] .navbar {
 }
 
 .hero__claim {
-  color: var(--text);
+  color: var(--black);
   font-size: 1.2em;
   width: 600px;
 }
 
 .button {
+  background-color: var(--black);
   padding: 12px 24px;
+}
+
+.button--secondary {
+  color: var(--banner-background) !important;
 }
