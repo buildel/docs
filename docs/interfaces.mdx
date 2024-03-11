@@ -137,21 +137,12 @@ import TabItem from "@theme/TabItem";
                       outputName: string,
                       payload: unknown
                   ) => {
-                      console.log(
-                          `Output from block ${blockId}, output ${outputName}:`,
-                          payload
-                      );
-
                       onBlockOutput?.(blockId, outputName, payload);
                   },
                   onBlockStatusChange: (blockId: string, isWorking: boolean) => {
-                      console.log(`Block ${blockId} is ${isWorking ? "working" : "stopped"}`);
-
                       onBlockStatusChange?.(blockId, isWorking);
                   },
                   onStatusChange: (status: BuildelRunStatus) => {
-                      console.log(`Status changed: ${status}`);
-
                       setStatus(status);
                   },
                   onBlockError: (blockId: string, errors: string[]) => {
@@ -185,9 +176,8 @@ import TabItem from "@theme/TabItem";
       ```
       ### Options
       #### `topic`: *string*
-      This is a combination of `organizationId` and `pipelineId` separated by a colon.
-      In this example: `27:1:input`, `27` is the `organizationId` and `1` is the `pipelineId`.
-      Any name to identify query. Should be always suffixed with `:input`. Example: `chat:input`
+      This is a combination of `blockName` and `fieldName` separated by a colon.
+      In this example: `text_input_1:input`, `text_input_1` refers to name of block you want to send payload to and `input` is name of field within this block.
 
       #### `payload`: *any*
       Payload can be anything from string to complex object or even array of object. You name it.
