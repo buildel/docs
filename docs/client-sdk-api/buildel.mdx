@@ -1,7 +1,9 @@
 ---
-title: Client SDK API
-sidebar_position: 8
+title: "@buildel/buildel"
+sidebar_position: 1
 ---
+
+Core package for connecting to socket and interacting with Buildel
 
 ## `BuildelSocket`
 
@@ -54,6 +56,8 @@ Returns status
 | `onBlockStatusChange` _(optional)_ | `(blockId: string, isWorking: boolean) => void`                   |
 | `onStatusChange` _(optional)_      | `(status: "idle" \| "starting" \| "running") => void`             |
 
+---
+
 ## `BuildelRun`
 
 ```ts
@@ -81,10 +85,12 @@ const run = buildel.run(runId);
 #### Properties
 
 | property  | details                                                                    | type                                     |
-|-----------|----------------------------------------------------------------------------|------------------------------------------|
+| --------- | -------------------------------------------------------------------------- | ---------------------------------------- |
 | `topic`   | This is a combination of `blockName` and `fieldName` separated by a colon. | _`string`_                               |
 | `payload` | Any structure you need                                                     | _`string \| boolean \| object \| array`_ |
 
 ---
 
 ### `status(): "idle" | "starting" | "running"`
+
+---

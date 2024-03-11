@@ -81,7 +81,7 @@ const config: Config = {
           position: "left",
           label: "Documentation",
         },
-        { to: "/api", label: "API", position: "left" },
+        { to: "/api", label: "API Reference", position: "left" },
         {
           href: "https://github.com/elpassion/buildel",
           label: "GitHub",

@@ -1,0 +1,29 @@
+---
+title: "@buildel/buildel-auth"
+sidebar_position: 2
+---
+
+Package for authentication
+
+```ts
+const buildelAuth = new BuildelAuth(process.env.BUILDEL_API_KEY);
+```
+
+### Methods
+
+### `generateAuth(socketId: string, channelName: string, userData?: Record<string, any>): { auth: string; user_data: string; }`
+
+Generated object
+
+#### Response
+
+| property  | description                               |
+| --------- | ----------------------------------------- |
+| auth      | random string for authentication purposes |
+| user_data | stringified object with user's metadata   |
+
+---
+
+### `createAuthMessage(socketId: string, channelName: string, userJSON: string): string;`
+
+---
