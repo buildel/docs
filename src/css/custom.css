@@ -66,6 +66,16 @@ html[data-theme="light"] .navbar {
   margin: 30px;
 }
 
+@media screen and (max-width: 900px) {
+  .hero__container {
+    margin: 0;
+  }
+}
+
+.hero--primary {
+  padding: 0;
+}
+
 .hero__title {
   color: var(--black);
 }
@@ -80,7 +90,8 @@ html[data-theme="light"] .navbar {
 .hero__claim {
   color: var(--black);
   font-size: 1.2em;
-  width: 600px;
+  max-width: 600px;
+  width: 100%;
 }
 
 .button {
@@ -90,4 +101,8 @@ html[data-theme="light"] .navbar {
 
 .button--secondary {
   color: var(--banner-background) !important;
+}
+
+.heroBanner_src-pages-index-module {
+  padding: 0 !important;
 }
