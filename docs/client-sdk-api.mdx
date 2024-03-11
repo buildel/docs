@@ -6,15 +6,85 @@ sidebar_position: 8
 ## `BuildelSocket`
 
 ```ts
-new BuildelSocket(organizationId, options)
+const buildel = new BuildelSocket(organizationId, options);
 ```
+
 ### Properties
 
-#### `organizationId: number` (*required*)
+#### `organizationId: number` (_required_)
 
-#### `options: object` (*optional*)
+#### `options: object` (_optional_)
+
 | name        | type                     |
-|-------------|--------------------------|
+| ----------- | ------------------------ |
 | `socketUrl` | `string`                 |
 | `authUrl`   | `string`                 |
 | `headers`   | `Record<string, string>` |
+
+### Methods
+
+### `connect(): Promise<BuildelSocket>`
+
+Initializes connection
+
+---
+
+### `disconnect(): Promise<BuildelSocket>`
+
+Terminates connection
+
+---
+
+### `status()`
+
+Returns status
+
+---
+
+### `run(pipelineId: number, handlers?: object): BuildelRun`
+
+### `handlers`
+
+#### Properties
+
+| property                           | details                                                           |
+| ---------------------------------- | ----------------------------------------------------------------- |
+| `onBlockOutput` _(optional)_       | `(blockId: string, outputName: string, payload: unknown) => void` |
+| `onBlockError` _(optional)_        | `(blockId: string, errors: string[]) => void`                     |
+| `onBlockStatusChange` _(optional)_ | `(blockId: string, isWorking: boolean) => void`                   |
+| `onStatusChange` _(optional)_      | `(status: "idle" \| "starting" \| "running") => void`             |
+
+## `BuildelRun`
+
+```ts
+const run = buildel.run(runId);
+```
+
+### Methods
+
+### `start(initial_inputs?: InitialInput[], alias?: string): Promise<BuildelRun | undefined>`
+
+#### Properties
+
+| property                    | details                           |
+| --------------------------- | --------------------------------- |
+| `InitialInput` _(optional)_ | `{ name: string, value: string }` |
+
+---
+
+### `stop(): Promise<BuildelRun | undefined>`
+
+---
+
+### `push(topic: string, payload: any)`
+
+#### Properties
+
+| property  | details                                                                    | type                                     |
+|-----------|----------------------------------------------------------------------------|------------------------------------------|
+| `topic`   | This is a combination of `blockName` and `fieldName` separated by a colon. | _`string`_                               |
+| `payload` | Any structure you need                                                     | _`string \| boolean \| object \| array`_ |
+
+---
+
+### `status(): "idle" | "starting" | "running"`
