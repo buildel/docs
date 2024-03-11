@@ -111,19 +111,9 @@ import TabItem from "@theme/TabItem";
       ---
       ## Initialize run instance
 
-      Initialize a run instance with your `workflow ID` to manage events for specific blocks, handle errors, and perform other workflow operations.
+      Initialize a run instance with your `workflowId` to manage events for specific blocks, handle errors, and perform other workflow operations.
 
-      ```tsx title="BuildelSocket.tsx"
-      export function useBuildelSocket() {
-          const context = useContext(BuildelContext);
-
-          if (!context) {
-            throw new Error("useBuildelSocket must be used within a BuildelProvider");
-          }
-
-          return context;
-      }
-
+      ```tsx title="BuildelSocket.tsx" {18}
       interface UsePipelineRunProps {
           onBlockOutput?: (
               blockId: string,
@@ -131,17 +121,17 @@ import TabItem from "@theme/TabItem";
               payload: unknown
           ) => void;
           onBlockStatusChange?: (blockId: string, isWorking: boolean) => void;
-          runId: number;
+          workflowId: number;
       }
 
-      export const usePipelineRun = ({ runId, onBlockOutput, onBlockStatusChange }: UsePipelineRunProps) => {
+      export const usePipelineRun = ({ workflowId, onBlockOutput, onBlockStatusChange }: UsePipelineRunProps) => {
           const { buildel } = useBuildelSocket();
           const runRef = useRef<BuildelRun>();
 
           useEffect(() => {
               if (!buildel) return;
 
-              const run = buildel.run(runId, {
+              const run = buildel.run(workflowId, {
                   onBlockOutput: (
                       blockId: string,
                       outputName: string,
@@ -171,7 +161,16 @@ import TabItem from "@theme/TabItem";
 
               runRef.current = run;
           }, [buildel]);
+      }
 
+      export function useBuildelSocket() {
+        const context = useContext(BuildelContext);
+
+        if (!context) {
+          throw new Error("useBuildelSocket must be used within a BuildelProvider");
+        }
+
+        return context;
       }
       ```
       ---
@@ -200,7 +199,12 @@ import TabItem from "@theme/TabItem";
       When your interactions with the API conclude, ensure you properly close the socket connection. This step is critical for releasing resources and securely disconnecting from the server.
 
       ```tsx title="BuildelSocket.tsx"
-      await buildel.disconnect();
+      useEffect(() => {
+        // ...
+        return () => {
+            await buildel.disconnect();
+        }
+      })
       ```
 
   </TabItem>
