@@ -8,20 +8,21 @@ export const Hero = () => {
   const { siteConfig } = useDocusaurusContext();
   return (
     <header className={clsx("hero hero--primary", styles.heroBanner)}>
-      <div className="container">
+      <div className="hero__container">
         <Heading as="h1" className="hero__title">
-          {siteConfig.title}
+          Buildel
         </Heading>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <p className='hero__subtitle'>Documentation</p>
+        <p className="hero__claim">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
             to="/docs/intro"
           >
-            Read docs
+            Read docs 📖
           </Link>
         </div>
       </div>
     </header>
   );
-}
+};
