@@ -65,6 +65,13 @@ const config: Config = {
       },
     ],
     ["./src/example-plugin/index.ts", { id: "example-plugin" }],
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      ({
+        hashed: true,
+      }),
+    ],
   ],
 
   themeConfig: {
