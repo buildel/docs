@@ -64,6 +64,7 @@ const config: Config = {
         },
       },
     ],
+    ["./src/example-plugin.ts", { id: "example-plugin" }],
   ],
 
   themeConfig: {
