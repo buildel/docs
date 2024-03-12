@@ -1,11 +1,11 @@
 ---
-id: buildel-web-user-password-reset-controller-create
+id: buildel-web-user-registration-controller-create
 title: "Create user forgot password request"
 description: "Create user forgot password request"
 sidebar_label: "Create user forgot password request"
 hide_title: true
 hide_table_of_contents: true
-api: eJylVFFP3DAM/iuVtbeFK0N76hMDgbSnIQbaw12R3NZ3F0iT4KTAqep/n5z2jjuYNqT1oU1S+7P92V96qNGYCuuHAEU/KHCeGKN29nsDBZx12jRkflE1uw3EVxjCs+PmmgLFc2cjO2OIZzUTRgIFHhlbisQBinmpgOmxoxDPXLOBoofa2Ug2yhK9N7pOkfL74KychXpNLcrKs+QRNUlWQC1qI4uGQs3aixMUIBll4z8F9IKtNwTFaH2a3rPatSmrGInF5W5+t1iE8vPp9P0ECuLGi1uIrO0KhmHMWjM1UMyn2KWCqGOCl6jnqd5LxysXXzlJpb4Cuuqe6giDIB4m3gVi2A+zRBMoBQ7e2TBWfXJ8/G/O3oOHrq4pBBgUfD05+R/WmR2nFTaNFhc0VwcWOlIb3vflUpNpsuSetRQCrmQ0yHatEHprPTvJECtDGdmo4ybxe9iG3QEy42Zvv6N1ryX7kBcj4kfa8KdMEi6uZH7HPpVv3cbmZ/IzW6YRyPw0AxnvhqCluHYiIe/S3mNcQwE5ep2La8i3TjmLmkBBIH4aldNDxwYKWMfoQ5Hn1SjDI/R6tjSbWUNPoOAJWUvqSblDKQB1x1JE0p709/pVfxdbgez09E4pgwJtl05MttROF4BEIw4jAV9mx2IqhbWYRshiSx9m5oDNftumSC8x9wa1FexUfj+RNgf0GlRqR0hUjphJQkJdqWAtLBdz6PsKA92yGQY5fuyIJzq2bMluULAmbIgT1w+0keRHlRzdSD5ibro0fm8VM6itx7e6Jh//alvuDcLVj583oKCa7sLWNeLD+Cx14DMUsIAFgFzBgpCElc57MGhXnciogBFXnt9hGgFW
+api: eJylVU1v2zAM/SsBsdvcpA128mlr1wEFBqxIW+yQpABjM4laWVIpuWlg+L8PlO3G+cBQoDk4Mi0+Pz6RzxVkqPUCs2cPaVUnYB0xBmXNTQ4pXJZK56T/0mL44IkntFI+NM+vrAlstSYeZkwYCBJwyFhQIPaQTucJML2U5MOlzbeQVpBZE8gEWaJzWmURaPTkrZGYz9ZUoKwcC42gSEhB6YmPo1Sg0rLIyWesnEBBCtcxnAC9YeE0Qdps/B6vw8wWkWYIxLL7cfo4m/n51+/t/xdIIGydpPnAyqyglu3ebyznxy+77Z4kUCjzm8wqrCG9GB+B1I0WiimHdNpy7yHP3zPs4omycJQRNZBdKsSi5DSuouz9M5k0esMxWp0cUI+A/XcsUXuKb/XOGt+IPD6/+MTB5RhORNUJIaWcwc3PHXFlAq2Ij3RQ+aEKJ4rdT4ksDpLu1nYzaQv9sFp1At/G40/oQcyW4wrzXEkK6tt9bQIV/lieX4p0Pojpg4K8x5WwJlMWUuCDcWwzCS80DcgEFba9jto1chtAZtz27nu6vWvUh7xuED8i0ykmERdXvt/G+2lNIw/k4WBpeWXDoJuMAb+3dEFhbcWUnI33DmXYYIROjSTVjziOQmwJT/za2FAFJWtIYR2C8+lotGgs7QydGi71dpjTKyTwiqyEdHTBei4AWclCPxqZnOxkZ2bXnbnszKm1o5Nu09lH3w6UWVrJ6xRvnVaoEPtGl4vhefQf60OBsbMMFvRhwfZErrrTC/QWRk6jMoIdtalaLaeATkESa/LRHFo95wmsRfR0ClW1QE8PrOtawi8lcatRJ6Hc1QmsCXORZlrBM22FdDM0Z/fCQ7brMnbj4QDVSZfxI8vIhf/unff64vbP3T0ksGi/NoXNJYdxI6XgBlKYwQxAvnGCEOcsxivQaFalTFUKDa78/gFzjHn3
 sidebar_class_name: "post api-method"
 info_path: api/workflows/buildel
 custom_edit_url: null
@@ -32,7 +32,7 @@ import TabItem from "@theme/TabItem";
 
 <MethodEndpoint
   method={"post"}
-  path={"/api/users/password/reset"}
+  path={"/api/users/register"}
 >
   
 </MethodEndpoint>
@@ -81,14 +81,61 @@ Create user forgot password request
         style={{"marginLeft":"1rem"}}
       >
         <SchemaItem
-          collapsible={false}
-          name={"email"}
-          required={true}
-          schemaName={"string"}
-          qualifierMessage={"**Possible values:** Value must match regular expression `^[^\\s]+@[^\\s]+$`"}
-          schema={{"description":"User email","example":"email@email.com","pattern":"^[^\\s]+@[^\\s]+$","type":"string"}}
+          collapsible={true}
+          className={"schemaItem"}
         >
-          
+          <details
+            style={{}}
+            className={"openapi-markdown__details"}
+          >
+            <summary
+              style={{}}
+            >
+              <span
+                className={"openapi-schema__container"}
+              >
+                <strong
+                  className={"openapi-schema__property"}
+                >
+                  user
+                </strong><span
+                  className={"openapi-schema__name"}
+                >
+                   object
+                </span><span
+                  className={"openapi-schema__divider"}
+                >
+                  
+                </span><span
+                  className={"openapi-schema__required"}
+                >
+                  required
+                </span>
+              </span>
+            </summary><div
+              style={{"marginLeft":"1rem"}}
+            >
+              <SchemaItem
+                collapsible={false}
+                name={"email"}
+                required={true}
+                schemaName={"string"}
+                qualifierMessage={"**Possible values:** Value must match regular expression `^[^\\s]+@[^\\s]+$`"}
+                schema={{"description":"Email","example":"email@email.com","pattern":"^[^\\s]+@[^\\s]+$","type":"string"}}
+              >
+                
+              </SchemaItem><SchemaItem
+                collapsible={false}
+                name={"password"}
+                required={true}
+                schemaName={"string"}
+                qualifierMessage={"**Possible values:** `>= 12 characters`"}
+                schema={{"description":"Password","minLength":12,"type":"string"}}
+              >
+                
+              </SchemaItem>
+            </div>
+          </details>
         </SchemaItem>
       </ul>
     </details>
@@ -100,13 +147,13 @@ Create user forgot password request
       id={undefined}
     >
       <TabItem
-        label={"200"}
-        value={"200"}
+        label={"201"}
+        value={"201"}
       >
         <div>
           
           
-          success
+          user
           
           
         </div><div>
@@ -145,9 +192,66 @@ Create user forgot password request
                     </div><ul
                       style={{"marginLeft":"1rem"}}
                     >
-                      any
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                data
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span><span
+                                className={"openapi-schema__divider"}
+                              >
+                                
+                              </span><span
+                                className={"openapi-schema__required"}
+                              >
+                                required
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <SchemaItem
+                              collapsible={false}
+                              name={"id"}
+                              required={true}
+                              schemaName={"integer"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"User ID","type":"integer"}}
+                            >
+                              
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem>
                     </ul>
                   </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"data\": {\n    \"id\": 0\n  }\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
                 </TabItem>
               </SchemaTabs>
             </TabItem>

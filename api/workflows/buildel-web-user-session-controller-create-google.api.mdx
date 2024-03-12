@@ -1,11 +1,11 @@
 ---
-id: buildel-web-user-password-reset-controller-create
-title: "Create user forgot password request"
-description: "Create user forgot password request"
-sidebar_label: "Create user forgot password request"
+id: buildel-web-user-session-controller-create-google
+title: "Sign in with google"
+description: "Sign in with google"
+sidebar_label: "Sign in with google"
 hide_title: true
 hide_table_of_contents: true
-api: eJylVFFP3DAM/iuVtbeFK0N76hMDgbSnIQbaw12R3NZ3F0iT4KTAqep/n5z2jjuYNqT1oU1S+7P92V96qNGYCuuHAEU/KHCeGKN29nsDBZx12jRkflE1uw3EVxjCs+PmmgLFc2cjO2OIZzUTRgIFHhlbisQBinmpgOmxoxDPXLOBoofa2Ug2yhK9N7pOkfL74KychXpNLcrKs+QRNUlWQC1qI4uGQs3aixMUIBll4z8F9IKtNwTFaH2a3rPatSmrGInF5W5+t1iE8vPp9P0ECuLGi1uIrO0KhmHMWjM1UMyn2KWCqGOCl6jnqd5LxysXXzlJpb4Cuuqe6giDIB4m3gVi2A+zRBMoBQ7e2TBWfXJ8/G/O3oOHrq4pBBgUfD05+R/WmR2nFTaNFhc0VwcWOlIb3vflUpNpsuSetRQCrmQ0yHatEHprPTvJECtDGdmo4ybxe9iG3QEy42Zvv6N1ryX7kBcj4kfa8KdMEi6uZH7HPpVv3cbmZ/IzW6YRyPw0AxnvhqCluHYiIe/S3mNcQwE5ep2La8i3TjmLmkBBIH4aldNDxwYKWMfoQ5Hn1SjDI/R6tjSbWUNPoOAJWUvqSblDKQB1x1JE0p709/pVfxdbgez09E4pgwJtl05MttROF4BEIw4jAV9mx2IqhbWYRshiSx9m5oDNftumSC8x9wa1FexUfj+RNgf0GlRqR0hUjphJQkJdqWAtLBdz6PsKA92yGQY5fuyIJzq2bMluULAmbIgT1w+0keRHlRzdSD5ibro0fm8VM6itx7e6Jh//alvuDcLVj583oKCa7sLWNeLD+Cx14DMUsIAFgFzBgpCElc57MGhXnciogBFXnt9hGgFW
+api: eJylVMFO3EAM/ZXI57AB1FNuhdIKqVIRC+KwrJCTmGRgMjN4JiyrKP9eeRKW3YVWSOQ0cezn917G7qFErQssHz3k/ZCCdcQYlDXnFeRw0ildkb6hYnbtiefkvbLm1JrAVmviWcmEge5qa2tNkIJDxpYCsYd8sUyB6akjH05stYa8h9KaQCbIEZ3TqoytsgdvjcR82VCLcnIsRIIioQXBPlJMqMiXrJwUQQ5XMZxCWDuCHHxgZWoYhrGtYqogX0zFyxSCClryRMlp5P3b1srcqND8ivwvR7JviLZ4oDLAIJC7rTtPDNt97lF7ip29s8aPvI8Pj76gusLwQVRV740QRcn5jzfiygSqid95oap9Iz4Qu1sSWewVzRu7upyEftqtIYVvx8df8IOYLccTVpWSEtQXu94Eav17e34q0lUSy5OWvMdaWJPpWhF4bRzbUsKFpoRMUGEdBe/eqk0AmXG99b7l28ajbcizEfEzNn3EJOJiLfM0+rjcL5ur2iTKJCsVmmQziS2FxsoMOxuvtMPQQA4ZOpUJjs/G1Ezb+k7JGHni53Fwe+hYQw5NCM7nWVaMa+AAnZrd6/WsomdI4RlZCdO4OYalAJQdC+c4+vI7L9/G/+wFWyfubMZ5y1pl7m38Mhk47R1pQuxHmUezQ0kVOS3Gi2KwpX/q3/GofzU/0EvInEZlBCuq7CdrFoBOQRpN9pDCBmkyaJlCI1bmC+j7Aj1dsx4GCT91xJPoV0/kbUihIayIo6OPtIYcTserf3AldCRdd/FO7Y/BkL5WfC9LcuG/ucutv33xZ34FKRTTwm1tJTWMK9lWuIIcbuEWQBa9IMRpifEeNJq6k9nIYcSV5y/2WyGY
 sidebar_class_name: "post api-method"
 info_path: api/workflows/buildel
 custom_edit_url: null
@@ -27,19 +27,19 @@ import TabItem from "@theme/TabItem";
 <h1
   className={"openapi__heading"}
 >
-  Create user forgot password request
+  Sign in with google
 </h1>
 
 <MethodEndpoint
   method={"post"}
-  path={"/api/users/password/reset"}
+  path={"/api/users/google/log_in"}
 >
   
 </MethodEndpoint>
 
 
 
-Create user forgot password request
+Sign in with google
 
 ## Request
 
@@ -82,11 +82,11 @@ Create user forgot password request
       >
         <SchemaItem
           collapsible={false}
-          name={"email"}
+          name={"token"}
           required={true}
           schemaName={"string"}
-          qualifierMessage={"**Possible values:** Value must match regular expression `^[^\\s]+@[^\\s]+$`"}
-          schema={{"description":"User email","example":"email@email.com","pattern":"^[^\\s]+@[^\\s]+$","type":"string"}}
+          qualifierMessage={undefined}
+          schema={{"description":"Token","type":"string"}}
         >
           
         </SchemaItem>
@@ -100,13 +100,13 @@ Create user forgot password request
       id={undefined}
     >
       <TabItem
-        label={"200"}
-        value={"200"}
+        label={"201"}
+        value={"201"}
       >
         <div>
           
           
-          success
+          user
           
           
         </div><div>
@@ -145,9 +145,66 @@ Create user forgot password request
                     </div><ul
                       style={{"marginLeft":"1rem"}}
                     >
-                      any
+                      <SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                data
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span><span
+                                className={"openapi-schema__divider"}
+                              >
+                                
+                              </span><span
+                                className={"openapi-schema__required"}
+                              >
+                                required
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <SchemaItem
+                              collapsible={false}
+                              name={"id"}
+                              required={true}
+                              schemaName={"integer"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"User ID","type":"integer"}}
+                            >
+                              
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem>
                     </ul>
                   </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"data\": {\n    \"id\": 0\n  }\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
                 </TabItem>
               </SchemaTabs>
             </TabItem>
