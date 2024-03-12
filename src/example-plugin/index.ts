@@ -1,6 +1,6 @@
 import fs from "fs/promises";
 import { LoadContext, PluginOptions, PluginConfig } from "@docusaurus/types";
-import { assert, schema } from "./Schema";
+import { assert, fieldFn, schema } from "./Schema";
 
 export default async function plugin(
   context: LoadContext,
@@ -19,8 +19,8 @@ export default async function plugin(
 
 async function createBlocksDocumentation() {
   const { data: blocks } = await fetchBlocks();
-  await fs.rmdir("./docs/blocks/new", { recursive: true });
-  await fs.mkdir("./docs/blocks/new", { recursive: true });
+  // await fs.rmdir("./docs/blocks/new", { recursive: true });
+  // await fs.mkdir("./docs/blocks/new", { recursive: true });
   for (const block of blocks) {
     const result = schema({
       schema: block.schema,
@@ -36,23 +36,33 @@ async function createBlocksDocumentation() {
         string: ({ field }) => {
           assert(field.type === "string");
           return `
-### ${field.title} (string)
+### ${field.title} _(string)_
 ${field.description}
         `;
         },
       },
     });
 
-    const text = `
-# ${block.type}
+    const parsedTitle = block.type
+      .replace(/^[\s_]+|[\s_]+$/g, "")
+      .replace(/[_\s]+/g, " ");
+
+    const text = `---
+title: ${parsedTitle}
+---
+
+# ${parsedTitle}
 ${block.description}
+
 ## Inputs
-${block.inputs.map((input) => `### ${input.name} (${input.type})`).join("\n")}
+${block.inputs.map((input) => `### ${input.name} _(${input.type})_`).join("\n")}
+---
 ## Fields
 ${joinTexts(result)}
+---
     `;
 
-    await fs.writeFile(`./docs/blocks/new/${block.type}.md`, text);
+    await fs.writeFile(`./docs/blocks/${block.type}.mdx`, text);
   }
 }
 

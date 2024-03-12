@@ -1,21 +1,54 @@
 ---
-title: Chat
+title: chat
 ---
 
-Large Language Model chat block enabling advanced conversational interactions powered by **OpenAI's** cutting-edge language models.
+# chat
+Large Language Model chat block enabling advanced conversational interactions powered by OpenAI's cutting-edge language models.
 
-## Settings
+## Inputs
+### input _(text)_
+---
+## Fields
 
-In order to go to block's settings, you need to simply click settings icon
+        
 
-![Img](./images/chat-block.png)
+### Name _(string)_
+The name of the block. Can only contain letters, numbers, and underscores. Cannot include spaces.
+        
 
-### Properties
+### Description _(string)_
+The description of the chat.
+        
 
-#### Name
+### API key _(string)_
+OpenAI API key to use for the chat.
+        
 
-This is a name of chat. You can name it whatever you want but remember to use underscore (`_`) instead of space. Also doesn't matter if you'll write it lowercase, uppercase or normal case.
+### Model API type _(string)_
+The API type to use for the chat.
+        
 
-:::tip
-Example: MY_CUSTOM_NAME, my_custom_name
-:::
+### Model _(string)_
+The model to use for the chat.
+        
+
+### Endpoint _(string)_
+The endpoint to use for the chat.
+        
+
+### Chat memory type _(string)_
+The chat memory type to use for the chat.
+        
+opts.temperature
+
+### System message _(string)_
+The message to start the conversation with.
+        
+
+        
+
+### Prompt template _(string)_
+The template to use for the prompt. Pass `{{input_name:output}}` to use the input value.
+        
+---
+    
