@@ -7,11 +7,11 @@ export default async function plugin(
   options: PluginOptions
 ) {
   return {
-    name: "example-plugin",
+    name: "gen-blocks-api",
     extendCli(cli: any): void {
       cli
-        .command("example-plugin")
-        .description("Example plugin command")
+        .command("gen-blocks-api")
+        .description("Generate API for blocks")
         .action(createBlocksDocumentation);
     },
   };
@@ -19,8 +19,6 @@ export default async function plugin(
 
 async function createBlocksDocumentation() {
   const { data: blocks } = await fetchBlocks();
-  // await fs.rmdir("./docs/blocks/new", { recursive: true });
-  // await fs.mkdir("./docs/blocks/new", { recursive: true });
   for (const block of blocks) {
     const result = schema({
       schema: block.schema,
@@ -47,7 +45,7 @@ ${field.description}
       .replace(/^[\s_]+|[\s_]+$/g, "")
       .replace(/[_\s]+/g, " ");
 
-    const text = `---
+    const content = `---
 title: ${parsedTitle}
 ---
 
@@ -62,7 +60,7 @@ ${joinTexts(result)}
 ---
     `;
 
-    await fs.writeFile(`./docs/blocks/${block.type}.mdx`, text);
+    await fs.writeFile(`./docs/blocks/${block.type}.mdx`, content);
   }
 }
 
