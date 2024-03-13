@@ -1,11 +1,7 @@
 import fs from "fs/promises";
-import { LoadContext, PluginOptions } from "@docusaurus/types";
 import { assert, schema } from "./Schema";
 
-export default async function plugin(
-  context: LoadContext,
-  options: PluginOptions
-) {
+export default async function plugin() {
   return {
     name: "gen-blocks-api",
     extendCli(cli: any): void {
@@ -25,21 +21,18 @@ async function createBlocksDocumentation() {
       name: null,
       fields: {
         array: ({ name, field }) => {
-          console.log("array", name, field);
           assert(field.type === "array");
           return `${field.title} | ${field.description}`;
         },
         asyncCreatableSelect: ({ name }) => name,
         asyncSelect: ({ name }) => name,
         boolean: ({ field }) => {
-          console.log("boolean", field);
           assert(field.type === "boolean");
           return `${field.title} | ${field.description} | Default: \`${field.default}\``;
         },
         editor: ({ name }) => `editor, ${name}`,
         number: ({ field, name, fields, schema }) => {
           assert(field.type === "number");
-          if (field.title === "Limit") console.log("limit", field);
           let text = `${field.title} | ${field.description} | Default: \`${field.default}\``;
 
           if (field.minimum && field.maximum) {
