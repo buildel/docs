@@ -6,17 +6,22 @@ title: document search
 Used for efficient searching and retrieval of information from a collection of documents inside Buildel Knowledge Base.
 
 ## Inputs
-### files _(file)_
-### query _(text)_
+Inputs divide into public and private. Public input is for user's interaction with block. Private input is for communication between block and block. You can't use these inputs directly
+
+| name | type | accessibility |
+|------|------|---------------|
+| files | file | Public |
+| query | text | Private |
 ---
 ## Fields
-| name | description | validation |
+| name | description | details |
 |------|-------------|------------|
-| Name | The name of the block. Can only contain letters, numbers, and underscores. Cannot include spaces. || 
- |Knowledge | The knowledge to use for retrieval. || 
- |Limit | The maximum number of results to return. Default: `3` || 
- |Similarity threshhold | The similarity threshhold to use for the search. Default: `0.75` || 
- |Metadata | The metadata of documents to include in retrieval. | |
+| Inputs | The inputs to the block.
+Name | The name of the block. Can only contain letters, numbers, and underscores. Cannot include spaces.
+Knowledge | The knowledge to use for retrieval.| 
+Limit | The maximum number of results to return. | Default: `3`| 
+Similarity threshhold | The similarity threshhold to use for the search. | Default: `0.75`| 
+Metadata | The metadata of documents to include in retrieval.
 
 ---
     

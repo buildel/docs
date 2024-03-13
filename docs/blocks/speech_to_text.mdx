@@ -6,16 +6,21 @@ title: speech to text
 This module is adept at transcribing audio data into text, offering outputs in both plain text and JSON formats.
 
 ## Inputs
-### input _(audio)_
+Inputs divide into public and private. Public input is for user's interaction with block. Private input is for communication between block and block. You can't use these inputs directly
+
+| name | type | accessibility |
+|------|------|---------------|
+| input | audio | Private |
 ---
 ## Fields
-| name | description | validation |
+| name | description | details |
 |------|-------------|------------|
-| Name | The name of the block. Can only contain letters, numbers, and underscores. Cannot include spaces. || 
- |Stop after (ms) | The temperature specifies the maximum duration (in ms.) for an operation to complete before the system terminates it due to inactivity or delay. Default: `10000` || 
- |Model | Model allows you to supply a model to use to process submitted audio. || 
- |Language | Language of the transcription. || 
- |API key | Deepgram API key | |
+| Inputs | The inputs to the block.
+Name | The name of the block. Can only contain letters, numbers, and underscores. Cannot include spaces.
+Stop after (ms) | The temperature specifies the maximum duration (in ms.) for an operation to complete before the system terminates it due to inactivity or delay. | Default: `10000`| 
+Model | Model allows you to supply a model to use to process submitted audio.| 
+Language | Language of the transcription.| 
+API key | Deepgram API key
 
 ---
     

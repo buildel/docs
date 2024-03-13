@@ -3,17 +3,22 @@ title: create block tool
 ---
 
 # create block tool
-Used to create block in workflow abc
+Used to create block in workflow abc.
 
 ## Inputs
-### organization_id _(text)_
-### pipeline_id _(text)_
+Inputs divide into public and private. Public input is for user's interaction with block. Private input is for communication between block and block. You can't use these inputs directly
+
+| name | type | accessibility |
+|------|------|---------------|
+| organization_id | text | Private |
+| pipeline_id | text | Private |
 ---
 ## Fields
-| name | description | validation |
+| name | description | details |
 |------|-------------|------------|
-| Name | The name of the block. Can only contain letters, numbers, and underscores. Cannot include spaces. || 
- | |
+| Inputs | The inputs to the block.
+Name | The name of the block. Can only contain letters, numbers, and underscores. Cannot include spaces.
+
 
 ---
     

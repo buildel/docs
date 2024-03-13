@@ -6,18 +6,22 @@ title: api call tool
 Tool used to call HTTP APIs.
 
 ## Inputs
-### args _(text)_
+Inputs divide into public and private. Public input is for user's interaction with block. Private input is for communication between block and block. You can't use these inputs directly
+
+| name | type | accessibility |
+|------|------|---------------|
+| args | text | Private |
 ---
 ## Fields
-| name | description | validation |
+| name | description | details |
 |------|-------------|------------|
-| Name | The name of the block. Can only contain letters, numbers, and underscores. Cannot include spaces. || 
- |Method | The HTTP method to use for the request. || 
- |URL | The URL to send the request to. If you want to use a variable, use `{{variable_name}}`. Notice the double curly braces! || 
- |Description | The description of the API call. || 
- |Parameters | Valid JSONSchema definition of the parameters passed to api call. Always pass a JSON object schema. ie. `{"type": "object", "properties": {"name": {"type": "string"}}, "required": ["name"]}`. || 
- |Headers | Valid JSON object of the headers to be sent with the request. ie. `{"Content-Type": "application/json"}`. || 
- |Authorize | Whether to authorize the request with organization secret. Default: `false` |
+| Name | The name of the block. Can only contain letters, numbers, and underscores. Cannot include spaces.
+Method | The HTTP method to use for the request.| 
+URL | The URL to send the request to. If you want to use a variable, use `{{variable_name}}`. Notice the double curly braces!| 
+Description | The description of the API call.| 
+Parameters | Valid JSONSchema definition of the parameters passed to api call. Always pass a JSON object schema. i.e. `{"type": "object", "properties": {"name": {"type": "string"}}, "required": ["name"]}`.| 
+Headers | Valid JSON object of the headers to be sent with the request. i.e. `{"Content-Type": "application/json"}`.| 
+Authorize | Whether to authorize the request with organization secret. | Default: `false`
 
 ---
     

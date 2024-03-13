@@ -1,6 +1,6 @@
 import fs from "fs/promises";
-import { LoadContext, PluginOptions, PluginConfig } from "@docusaurus/types";
-import { assert, fieldFn, schema } from "./Schema";
+import { LoadContext, PluginOptions } from "@docusaurus/types";
+import { assert, schema } from "./Schema";
 
 export default async function plugin(
   context: LoadContext,
@@ -24,27 +24,32 @@ async function createBlocksDocumentation() {
       schema: block.schema,
       name: null,
       fields: {
-        array: ({ name, field }) => ``,
+        array: ({ name, field }) => {
+          console.log("array", name, field);
+          assert(field.type === "array");
+          return `${field.title} | ${field.description}`;
+        },
         asyncCreatableSelect: ({ name }) => name,
         asyncSelect: ({ name }) => name,
-        boolean: ({ field, name }) => {
+        boolean: ({ field }) => {
           console.log("boolean", field);
           assert(field.type === "boolean");
-          return `${field.title} | ${field.description} Default: \`${field.default}\``;
+          return `${field.title} | ${field.description} | Default: \`${field.default}\``;
         },
         editor: ({ name }) => `editor, ${name}`,
         number: ({ field, name, fields, schema }) => {
           assert(field.type === "number");
-          let text = `${field.title} | ${field.description} Default: \`${field.default}\` |`;
+          if (field.title === "Limit") console.log("limit", field);
+          let text = `${field.title} | ${field.description} | Default: \`${field.default}\``;
 
           if (field.minimum && field.maximum) {
-            text += ` from ${field.minimum} to ${field.maximum}`;
+            text += `, Range: ${field.minimum} - ${field.maximum}`;
           }
           return text;
         },
         string: ({ field }) => {
           assert(field.type === "string");
-          return `${field.title} | ${field.description} |`;
+          return `${field.title} | ${field.description}`;
         },
       },
     });
@@ -61,12 +66,22 @@ title: ${parsedTitle}
 ${block.description}
 
 ## Inputs
-${block.inputs.map((input) => `### ${input.name} _(${input.type})_`).join("\n")}
+Inputs divide into public and private. Public input is for user's interaction with block. Private input is for communication between block and block. You can't use these inputs directly
+
+| name | type | accessibility |
+|------|------|---------------|
+${block.inputs
+  .map((input) => {
+    return `| ${input.name} | ${input.type} | ${
+      input.public ? "Public" : "Private"
+    } |`;
+  })
+  .join("\n")}
 ---
 ## Fields
-| name | description | validation |
+| name | description | details |
 |------|-------------|------------|
-| ${joinTexts(result)} |
+| ${joinTexts(result)}
 
 ---
     `;
@@ -85,9 +100,9 @@ function joinTexts(blockResults: Array<string | Array<string>>) {
     .filter((i) => i !== "")
     .map((blockResult) => {
       if (Array.isArray(blockResult)) {
-        return blockResult.filter((i) => i !== "").join("| \n |");
+        return blockResult.filter((i) => i !== "").join("| \n");
       }
       return blockResult;
     })
-    .join("| \n |");
+    .join("\n");
 }
