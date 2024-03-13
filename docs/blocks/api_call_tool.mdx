@@ -15,12 +15,12 @@ Inputs divide into public and private. Public input is for user's interaction wi
 ## Fields
 | name | description | details |
 |------|-------------|------------|
-| Name | The name of the block. Can only contain letters, numbers, and underscores. Cannot include spaces.
-Method | The HTTP method to use for the request.| 
-URL | The URL to send the request to. If you want to use a variable, use `{{variable_name}}`. Notice the double curly braces!| 
-Description | The description of the API call.| 
-Parameters | Valid JSONSchema definition of the parameters passed to api call. Always pass a JSON object schema. i.e. `{"type": "object", "properties": {"name": {"type": "string"}}, "required": ["name"]}`.| 
-Headers | Valid JSON object of the headers to be sent with the request. i.e. `{"Content-Type": "application/json"}`.| 
+| Name | The name of the block. Can only contain letters, numbers, and underscores. Cannot include spaces. | N/A
+Method | The HTTP method to use for the request. | N/A| 
+URL | The URL to send the request to. If you want to use a variable, use `{{variable_name}}`. Notice the double curly braces! | N/A| 
+Description | The description of the API call. | N/A| 
+Parameters | Valid JSONSchema definition of the parameters passed to api call. Always pass a JSON object schema. i.e. `{"type": "object", "properties": {"name": {"type": "string"}}, "required": ["name"]}`. | N/A| 
+Headers | Valid JSON object of the headers to be sent with the request. i.e. `{"Content-Type": "application/json"}`. | N/A| 
 Authorize | Whether to authorize the request with organization secret. | Default: `false`
 
 ---

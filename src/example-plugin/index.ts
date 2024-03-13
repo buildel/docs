@@ -30,7 +30,7 @@ async function createBlocksDocumentation() {
       fields: {
         array: ({ name, field }) => {
           assert(field.type === "array");
-          return `${field.title} | ${field.description}`;
+          return `${field.title} | ${field.description} | N/A`;
         },
         asyncCreatableSelect: ({ name }) => name,
         asyncSelect: ({ name }) => name,
@@ -50,7 +50,7 @@ async function createBlocksDocumentation() {
         },
         string: ({ field }) => {
           assert(field.type === "string");
-          return `${field.title} | ${field.description}`;
+          return `${field.title} | ${field.description} | N/A`;
         },
       },
     });
