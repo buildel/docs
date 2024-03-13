@@ -13,6 +13,14 @@ export default async function plugin() {
   };
 }
 
+function capitalize(text: string) {
+  return text
+    .toLowerCase()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
 async function createBlocksDocumentation() {
   const { data: blocks } = await fetchBlocks();
   for (const block of blocks) {
@@ -52,10 +60,10 @@ async function createBlocksDocumentation() {
       .replace(/[_\s]+/g, " ");
 
     const content = `---
-title: ${parsedTitle}
+title: ${capitalize(parsedTitle)}
 ---
 
-# ${parsedTitle}
+# ${capitalize(parsedTitle)}
 ${block.description}
 
 ## Inputs
