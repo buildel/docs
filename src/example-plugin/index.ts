@@ -24,19 +24,27 @@ async function createBlocksDocumentation() {
       schema: block.schema,
       name: null,
       fields: {
-        array: ({ name, field }) => `
-        `,
+        array: ({ name, field }) => ``,
         asyncCreatableSelect: ({ name }) => name,
         asyncSelect: ({ name }) => name,
-        boolean: ({ name }) => name,
-        editor: ({ name }) => name,
-        number: ({ name }) => name,
+        boolean: ({ field, name }) => {
+          console.log("boolean", field);
+          assert(field.type === "boolean");
+          return `${field.title} | ${field.description} Default: \`${field.default}\``;
+        },
+        editor: ({ name }) => `editor, ${name}`,
+        number: ({ field, name, fields, schema }) => {
+          assert(field.type === "number");
+          let text = `${field.title} | ${field.description} Default: \`${field.default}\` |`;
+
+          if (field.minimum && field.maximum) {
+            text += ` from ${field.minimum} to ${field.maximum}`;
+          }
+          return text;
+        },
         string: ({ field }) => {
           assert(field.type === "string");
-          return `
-### ${field.title} _(string)_
-${field.description}
-        `;
+          return `${field.title} | ${field.description} |`;
         },
       },
     });
@@ -56,7 +64,10 @@ ${block.description}
 ${block.inputs.map((input) => `### ${input.name} _(${input.type})_`).join("\n")}
 ---
 ## Fields
-${joinTexts(result)}
+| name | description | validation |
+|------|-------------|------------|
+| ${joinTexts(result)} |
+
 ---
     `;
 
@@ -71,11 +82,12 @@ async function fetchBlocks() {
 
 function joinTexts(blockResults: Array<string | Array<string>>) {
   return blockResults
+    .filter((i) => i !== "")
     .map((blockResult) => {
       if (Array.isArray(blockResult)) {
-        return blockResult.join("\n");
+        return blockResult.filter((i) => i !== "").join("| \n |");
       }
       return blockResult;
     })
-    .join("\n");
+    .join("| \n |");
 }

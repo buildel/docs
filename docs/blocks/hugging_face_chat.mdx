@@ -9,31 +9,15 @@ This module integrates advanced Hugging Face language models to provide dynamic 
 ### input _(text)_
 ---
 ## Fields
+| name | description | validation |
+|------|-------------|------------|
+| Name | The name of the block. Can only contain letters, numbers, and underscores. Cannot include spaces. || 
+ |API Key | Select from your API keys or enter a new one. || 
+ |Model | The model to use for the chat. || 
+ |Stream | Whether to stream the chat. Default: `false`| 
+ |Temperature | The temperature of the chat. Default: `0.7` || 
+ |System message | The message to start the conversation with. || 
+ |Prompt template | The template to use for the prompt. | |
 
-        
-
-### Name _(string)_
-The name of the block. Can only contain letters, numbers, and underscores. Cannot include spaces.
-        
-
-### API Key _(string)_
-Select from your API keys or enter a new one.
-        
-
-### Model _(string)_
-The model to use for the chat.
-        
-opts.stream
-opts.temperature
-
-### System message _(string)_
-The message to start the conversation with.
-        
-
-        
-
-### Prompt template _(string)_
-The template to use for the prompt.
-        
 ---
     

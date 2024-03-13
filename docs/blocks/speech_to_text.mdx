@@ -9,24 +9,13 @@ This module is adept at transcribing audio data into text, offering outputs in b
 ### input _(audio)_
 ---
 ## Fields
+| name | description | validation |
+|------|-------------|------------|
+| Name | The name of the block. Can only contain letters, numbers, and underscores. Cannot include spaces. || 
+ |Stop after (ms) | The temperature specifies the maximum duration (in ms.) for an operation to complete before the system terminates it due to inactivity or delay. Default: `10000` || 
+ |Model | Model allows you to supply a model to use to process submitted audio. || 
+ |Language | Language of the transcription. || 
+ |API key | Deepgram API key | |
 
-        
-
-### Name _(string)_
-The name of the block. Can only contain letters, numbers, and underscores. Cannot include spaces.
-        
-opts.timeout
-
-### Model _(string)_
-Model allows you to supply a model to use to process submitted audio.
-        
-
-### Language _(string)_
-Language of the transcription.
-        
-
-### API key _(string)_
-Deepgram API key
-        
 ---
     

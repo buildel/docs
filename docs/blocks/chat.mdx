@@ -9,46 +9,18 @@ Large Language Model chat block enabling advanced conversational interactions po
 ### input _(text)_
 ---
 ## Fields
+| name | description | validation |
+|------|-------------|------------|
+| Name | The name of the block. Can only contain letters, numbers, and underscores. Cannot include spaces. || 
+ |Description | The description of the chat. || 
+ |API key | OpenAI API key to use for the chat. || 
+ |Model API type | The API type to use for the chat. || 
+ |Model | The model to use for the chat. || 
+ |Endpoint | The endpoint to use for the chat. || 
+ |Chat memory type | The chat memory type to use for the chat. || 
+ |Temperature | The temperature of the chat. Default: `0.7` || 
+ |System message | The message to start the conversation with. || 
+ |Prompt template | The template to use for the prompt. Pass `{{input_name:output}}` to use the input value. | |
 
-        
-
-### Name _(string)_
-The name of the block. Can only contain letters, numbers, and underscores. Cannot include spaces.
-        
-
-### Description _(string)_
-The description of the chat.
-        
-
-### API key _(string)_
-OpenAI API key to use for the chat.
-        
-
-### Model API type _(string)_
-The API type to use for the chat.
-        
-
-### Model _(string)_
-The model to use for the chat.
-        
-
-### Endpoint _(string)_
-The endpoint to use for the chat.
-        
-
-### Chat memory type _(string)_
-The chat memory type to use for the chat.
-        
-opts.temperature
-
-### System message _(string)_
-The message to start the conversation with.
-        
-
-        
-
-### Prompt template _(string)_
-The template to use for the prompt. Pass `{{input_name:output}}` to use the input value.
-        
 ---
     

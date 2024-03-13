@@ -10,21 +10,13 @@ Used for efficient searching and retrieval of information from a collection of d
 ### query _(text)_
 ---
 ## Fields
+| name | description | validation |
+|------|-------------|------------|
+| Name | The name of the block. Can only contain letters, numbers, and underscores. Cannot include spaces. || 
+ |Knowledge | The knowledge to use for retrieval. || 
+ |Limit | The maximum number of results to return. Default: `3` || 
+ |Similarity threshhold | The similarity threshhold to use for the search. Default: `0.75` || 
+ |Metadata | The metadata of documents to include in retrieval. | |
 
-        
-
-### Name _(string)_
-The name of the block. Can only contain letters, numbers, and underscores. Cannot include spaces.
-        
-
-### Knowledge _(string)_
-The knowledge to use for retrieval.
-        
-opts.limit
-opts.similarity_threshhold
-
-### Metadata _(string)_
-The metadata of documents to include in retrieval.
-        
 ---
     

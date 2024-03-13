@@ -9,30 +9,15 @@ Tool used to call HTTP APIs.
 ### args _(text)_
 ---
 ## Fields
+| name | description | validation |
+|------|-------------|------------|
+| Name | The name of the block. Can only contain letters, numbers, and underscores. Cannot include spaces. || 
+ |Method | The HTTP method to use for the request. || 
+ |URL | The URL to send the request to. If you want to use a variable, use `{{variable_name}}`. Notice the double curly braces! || 
+ |Description | The description of the API call. || 
+ |Parameters | Valid JSONSchema definition of the parameters passed to api call. Always pass a JSON object schema. ie. `{"type": "object", "properties": {"name": {"type": "string"}}, "required": ["name"]}`. || 
+ |Headers | Valid JSON object of the headers to be sent with the request. ie. `{"Content-Type": "application/json"}`. || 
+ |Authorize | Whether to authorize the request with organization secret. Default: `false` |
 
-### Name _(string)_
-The name of the block. Can only contain letters, numbers, and underscores. Cannot include spaces.
-        
-
-### Method _(string)_
-The HTTP method to use for the request.
-        
-
-### URL _(string)_
-The URL to send the request to. If you want to use a variable, use `{{variable_name}}`. Notice the double curly braces!
-        
-
-### Description _(string)_
-The description of the API call.
-        
-
-### Parameters _(string)_
-Valid JSONSchema definition of the parameters passed to api call. Always pass a JSON object schema. ie. `{"type": "object", "properties": {"name": {"type": "string"}}, "required": ["name"]}`.
-        
-
-### Headers _(string)_
-Valid JSON object of the headers to be sent with the request. ie. `{"Content-Type": "application/json"}`.
-        
-opts.authorize
 ---
     
