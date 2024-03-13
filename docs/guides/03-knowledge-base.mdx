@@ -1,6 +1,7 @@
 ---
 title: Knowledge Base
 ---
+import {Video} from "/src/components/Video";
 
 # Knowledge Base
 
@@ -19,3 +20,51 @@ In other words, what if we aim to set up a Q/A (Question and Answer) workflow? F
 ## Add Document Search block
 
 As you already know, Buildel provides many blocks for different purposes. One of the blocks that can utilize Knowledge Base is Document Search block.
+
+You can locate the Document Search block under the *Memory* category. Go ahead and add it, then connect it to the chat block using the **I/O** connections.
+
+<Video type="video/webm" src="/mdx-assets/guides/knowledge-base/add-document-search.webm"/>
+
+Similar to the chat block, the document search block has numerous options. However, to get it working, we only need to specify the `Knowledge` property, and we can leave the rest as the default settings.
+
+
+:::tip
+
+You can create a Knowledge Base by visiting the Knowledge Base subpage, or, as shown in our video, use the functionality directly within the document-search block.
+
+:::
+
+
+After that, lets update a System Message in our chat block. Add at the end *"Use available tools to answer questions"*.
+
+You might wonder, "What exactly are these tools?" This is an excellent question. Anything that we connect to the chat block via I/O connection can be used by the chat as an external tool and can be invoked whenever the chat deems it necessary.
+We take advantage of a feature named [Function calling](https://platform.openai.com/docs/guides/function-calling).
+
+Finally, let's add a file to our knowledge base. Click on "Browse file to upload" and upload your file to our memory. In this example, we used [20_popular_movies](/mdx-assets/guides/knowledge-base/20_popular_movies.txt).
+
+:::note
+
+Behind the scenes, Buildel will extract content from the file, divide it into chunks, and store it in a specially prepared vector database.
+
+:::
+
+## Try out our Knowledge Base!
+
+Great, everything is set up. Let's give it a try.
+
+<Video type="video/webm" src="/mdx-assets/guides/knowledge-base/test-workflow.webm"/>
+
+As you can see, our workflow is functioning! Initially, when we sent *"Hello"*, the Chat provided a basic greeting.
+However, when we inquired about movies, the Chat lacked sufficient information and opted to utilize our tool.
+
+You can also see what the chat sent to the Document Search block. The first message displayed in the text output block is *"Search most popular movies."*
+
+:::tip
+
+If you're curious to see how the document search block responds to the chat, simply add an additional Text Output block and connect it to the Document Search output.
+
+:::
+
+
+
+
