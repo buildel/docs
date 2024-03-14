@@ -1,0 +1,75 @@
+---
+title: Api Call Tool
+---
+import {Video} from "/src/components/Video";
+
+# Make an API Call to external APIs
+
+In this guide, you'll discover how to allow chat to make API calls to external APIs.
+
+## Prerequisites
+
+To move forward, you don't need to have a specific workflow ready, but to grasp the topic better, we strongly encourage you to follow along starting from our [previous guide](04-workflow-aliases.mdx).
+
+It would be also great if you're familiar with the [JSONPlaceholder](https://jsonplaceholder.typicode.com/guide/) API, as we will be using it in this guide.
+
+## What is an Api Call Tool?
+
+The [Api Call Tool](docs/blocks/api_call_tool.mdx) is a block designed to enhance your chat's functionality, enabling it to make API calls to both internal and external APIs.
+
+:::tip
+
+Because each block can access the organization's secrets, you can seamlessly integrate APIs that require specific permissions or authorizations.
+
+:::
+
+## How to configure an Api Call Tool?
+
+
+Before we begin, ensure you've created an alias for your workflow to preserve your configuration. If you're unsure how to do this, check out our guide. [previous guide](04-workflow-aliases.mdx).
+
+[Api Call Tool](docs/blocks/api_call_tool.mdx) requires a bit more effort to configure compared to, for example, the [Document Search](docs/blocks/document_search.mdx). Let's tackle it step by step.
+
+### Use a basic GET
+
+If you aim to give your chat access to open endpoints that don't need any authorization parameters, the task is relatively straightforward. Simply add the [Api Call Tool](docs/blocks/api_call_tool.mdx) block, connect it just as you did with the Document Search, and fill in the required configurations such as **url** and **description**.
+
+<Video type="video/webm" src="/mdx-assets/guides/api-call-tools/get-posts-list.webm"/>
+
+As observed, the chat can easily utilize this block to fetch posts when we ask questions related to the topic.
+Certainly, you're not restricted to just simple GET requests. You can execute almost any [HTTP](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) request methods!
+
+### Use GET with dynamic parameters
+
+The first example was fairly straightforward, but let's be real, in most cases, we need to pass some parameters to the URL or headers.
+
+Suppose we want the chat to fetch details about a specific post. This can be achieved by specifying the parameters that the Api Call Tool requires, using [JSONSchema](https://json-schema.org/).
+
+<Video type="video/webm" src="/mdx-assets/guides/api-call-tools/get-single-post.webm"/>
+
+As you can see, we have specified in the parameters that the [Api Call Tool](docs/blocks/api_call_tool.mdx) requires an ID parameter. We can then incorporate this parameter into the URL by enclosing it within `{{}}`.
+
+:::tip
+
+Similarly, you can use parameters in headers just like we did with the URL!
+
+:::
+
+### Use multiple API Call Tools
+
+Above example is already quite intresting but let's be honest it can be even more!
+
+Instead of directly passing the ID of the post to the prompt, we can combine two [Api Call Tool](docs/blocks/api_call_tool.mdx) blocks that we've already tested. This will allow the chat to extract the ID from a list of posts and then retrieve details about a specific post.
+
+<Video type="video/webm" src="/mdx-assets/guides/api-call-tools/two-api-call-tools.webm"/>
+
+In the example above, after asking for "details of two sample posts," the chat first fetches the list of posts by using *PostsList* tool and then uses their IDs to fetch their details by using *PostDetails*.
+We didn't need to specify any response parsers or anything similar. Cool, right?
+
+:::warning
+
+When you have multiple tools attached to the chat, it's crucial to assign the correct **name** and **description** to each tool.
+This approach enables the chat to understand what information each tool can provide and use the appropriate one accordingly.
+
+:::
+
