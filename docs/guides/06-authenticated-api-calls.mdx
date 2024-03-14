@@ -1,0 +1,53 @@
+---
+title: Authenticated Api Calls
+---
+import {Video} from "/src/components/Video";
+
+# Make an API Call to authenticated APIs
+
+In this guide, you'll learn about Secrets in Buildel and find out how to enable the chat to make API calls to authenticated external APIs.
+
+## Prerequisites
+
+We'll be using the [IMDb](https://rapidapi.com/Glavier/api/imdb146/) API to fetch movie details, so you'll need a RapidAPI key for authorization. To proceed, please visit [RapidAPI](https://rapidapi.com/hub and set up an account.
+
+We strongly encourage you to follow along starting from our [previous guide](05-api-call-tool.mdx).
+
+## What Secrets are?
+
+In Buildel, you have access to a feature called secrets. This allows you to create a secure value that can later be used in blocks and other parts of your workflows.
+
+## How to create a Buildel Secret?
+
+If you've been following the guides from the start, you've already created a secret! In the [Create first workflow](02-create-first-workflow.mdx) guide, you added an OpenAI secret for authorization with OpenAI.
+
+You can now check what secrets you already have in the *Secrets* tab in buildel.
+
+<Video type="video/webm" src="/mdx-assets/guides/authenticated-api-calls/add-new-secret.webm"/>
+
+As you can see, in the *Secrets* tab, you can manage your secrets. We have added a RapidAPI key for authorization with the previously mentioned external API.
+
+## How to use Secret in Api Call Tool?
+
+Let's return to our workflow, create an alias, and then make some adjustments.
+
+### Pass dynamic query parameter to url
+
+Instead of fetching data from the JSONPlaceholder API, we'll switch to a new URL `https://imdb146.p.rapidapi.com/v1/find`.
+This endpoint requires a **query** parameter with the name of the movie we are searching for.
+
+Just like we passed the ID in the [previous guide](05-api-call-tool.mdx), we can pass the query parameter in the same manner!
+
+Now, the chat block understands that the Api Call Tool requires a name parameter and will send it accordingly!
+
+<Video type="video/webm" src="/mdx-assets/guides/authenticated-api-calls/dynamic-query-param.webm"/>
+
+When we attempt to run our workflow, it doesn't work as expected. The chat indicates that it cannot retrieve information, which is accurate. RapidAPI requires us to send a `X-RapidAPI-Key` in the headers. Let's add that!
+
+### Pass secret to Api Call Tool headers
+
+Since we've already added the `X-RapidAPI-Key` to our Secrets, the only thing left is to inject this secret into the headers. We can do this in a very similar way to how we handled query parameters.
+
+<Video type="video/webm" src="/mdx-assets/guides/authenticated-api-calls/inject-secret-to-headers.webm"/>
+
+As you can see, by incorporating the secret into the headers, we've now got the chat functioning correctly!
