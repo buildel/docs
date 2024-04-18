@@ -1,0 +1,62 @@
+---
+title: Website Chatbot Interface
+---
+import {Video} from "/src/components/Video";
+
+# Use a Workflow as chat outside Buildel
+
+In this guide, you'll learn how to expand your workflow to public access through a URL as a standard chat.
+
+## Prerequisites
+
+To follow this guide, you don't need any specific workflow. It's enough to have just a simple chat with input and output blocks. However, we strongly encourage you to follow along starting from our  [previous guide](06-authenticated-api-calls.mdx).
+
+## What Interfaces are?
+
+As you probably already know, in Buildel you can create various workflows for many purposes. But what then? How can you use them outside of Buildel?
+
+Let's say you have your own website and you want to use your workflow to create a kind of question/answer assistant, or you are building an application and would like to use a workflow through an API or Websockets.
+
+For those cases, you can use Workflow Interfaces.
+
+When you navigate to your workflow page and click on the "Interface" tab, you will notice that there are four available interfaces: *Client SDK*, *HTTP Api*, *Website Chatbot* and *OpenAI Api*. However, in this guide, we will focus only on the Website Chatbot interface.
+
+## How to use Website Chatbot interface?
+
+The Website Chatbot interface allows you to very easily share your Chatbot workflow through a URL or embed it into a different page.
+
+When you enter the Interface tab, you will notice that there is an "Open preview" button. After clicking it, you will be redirected to the chat page where you can interact directly with your workflow! However, right now it won't work.
+
+<Video type="video/webm" src="/mdx-assets/guides/website-chatbot/not-working-chat.webm"/>
+
+As you already know, in a workflow you can have many Input, Output and Chat blocks, which causes Buildel not to know which blocks should be used as an input and which as an output for the chat.
+
+To fix that, the only thing we need to do is select the correct blocks from those available in Input, Output and Chat selects.
+
+Now, when you click "Open preview" again, you can write directly with your workflow!
+
+<Video type="video/webm" src="/mdx-assets/guides/website-chatbot/select-inputs-and-outputs.webm"/>
+
+Cool, right? And because this chat is on a separate page, you can easily embed it on your website using [HTML Iframes](https://www.w3schools.com/html/html_iframe.asp) for example.
+On the interface page, you can find a code snippet for that!
+
+:::warning
+
+Remember to check the "public" checkbox before embedding the chat on different websites. If not, this chat will be available only to you after signing in.
+
+:::
+
+## How to set a limit on Your Workflow?
+
+
+Since we are exposing our workflow to the public, it's important to remember to set a cost limit on our workflow in case someone uses it too frequently. This helps manage potential expenses and ensures that usage stays within your expected budget.
+
+To do so, navigate to the "Settings" page and set the limit like on the video below.
+
+<Video type="video/webm" src="/mdx-assets/guides/website-chatbot/costs-limit.webm"/>
+
+:::tip
+
+You can also see here how much your workflow has cost this month.
+
+:::
