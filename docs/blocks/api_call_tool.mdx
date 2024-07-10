@@ -25,3 +25,10 @@ Authorize | Whether to authorize the request with organization secret. | Default
 
 ---
     
+## Parameters interpolation
+
+You can use parameters in the `URL` and `headers` fields.
+
+To use a parameter specified in `Parameters` field, enclose it within `{{}}`. For example, if you have a parameter named `id`, you can use it in the URL as `https://example.com/posts/{{id}}`.
+
+In order to inject secret or [Metadata](../../docs/workflows/metadata) values, use `{{secrets.secret_name}}` or `{{metadata.metadata_name}}` respectively.

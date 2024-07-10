@@ -1,0 +1,15 @@
+---
+title: Metadata
+---
+
+import { Video } from "/src/components/Video";
+
+Workflow metadata is a powerful feature that allows you to store and retrieve information throught your workflow execution.
+Metadata is stored in the pipeline run context and can be interpolated in [Api Call Tool](docs/blocks/api_call_tool.mdx#Parameters-interpolation) block
+or in `X-Buildel-Context` header in [Api Call Tool](docs/blocks/api_call_tool.mdx) and [Webhook Output](docs/blocks/webhook_output.mdx) HTTP request.
+
+You can send metadata via websocket or http request on pipeline start.
+
+<Video type="video/webm" src="/mdx-assets/workflows/metadata/metadata_demo_07.webm"/>
+
+---
