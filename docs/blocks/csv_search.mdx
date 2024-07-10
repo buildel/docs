@@ -1,0 +1,26 @@
+---
+title: CSV Search
+---
+
+# CSV Search
+Used for SQL searching and retrieval of information from CSV files.
+
+## Inputs
+Inputs divide into public and private. Public input is for user's interaction with block. Private input is for communication between block and block. You can't use these inputs directly
+
+| name | type | accessibility |
+|------|------|---------------|
+| input | file | Private |
+| query | text | Private |
+---
+## Fields
+| name | description | details |
+|------|-------------|------------|
+Name | The name of the block. Can only contain letters, numbers, and underscores. Cannot include spaces. | N/A
+
+---
+    
+## Details
+
+The block parses the CSV file and stores it in a in-memory SQLite database.
+Queries can be executed directly using the `query` input or as a LLM function call.
