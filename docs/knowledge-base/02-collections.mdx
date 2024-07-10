@@ -1,0 +1,37 @@
+---
+title: Collections
+---
+
+import { Video } from "/src/components/Video";
+
+# Collections
+
+## Creating a New Collection
+
+To create a new collection, follow these steps:
+
+#### Navigate to the Knowledge Base:
+
+- On the main dashboard, locate the "Knowledge Base" section.
+
+#### Initiate Collection Creation:
+
+- Click the "New Collection" button. This will open the "Create A New Collection" form.
+
+#### Fill in the Collection Details:
+
+- Name: Enter a unique and descriptive name for your collection. This name will help you identify the collection in the knowledge base.
+- Embeddings API Type: Select the API type to be used for embeddings. The default option is "openai".
+- Endpoint: Enter the API endpoint URL used for retrieving embeddings. The default URL is https://api.openai.com/v1/embeddings.
+- Model: Select the model to be used for generating embeddings. The available models will be listed in the dropdown menu.
+- Secret: Select the secret key required to access the embeddings API. If you haven't added a secret key yet, you can do so by following the Secrets guide.
+- Chunk Size: Specify the size of the chunks in which the documents will be divided. The default value is 1000 characters.
+- Chunk Overlap: Define the overlap between chunks. The default value is 0 characters.
+
+#### Create the Collection:
+
+- Once all the details are filled in, click the "Create collection" button. Your new collection will be created and listed in the knowledge base.
+
+<Video type="video/webm" src="/mdx-assets/knowledge-base/collections/create_collection_07.webm"/>
+
+---
