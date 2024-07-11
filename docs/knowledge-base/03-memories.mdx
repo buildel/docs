@@ -6,11 +6,30 @@ import { Video } from "/src/components/Video";
 
 # Memories
 
-## Adding a Memory
+## Adding a memory
 
 To add a new memory, click the `Add new memory file` button and upload the file.
-It may take a while to process the file depending on its size. Do not refresh or close the app during the upload. 
+It may take a while to process the file depending on its size.
+
+:::warning
+Do not refresh or close the app during the upload. 
 Once the file is processed, the memory will be added to the collection.
+:::
 
 
 <Video type="video/webm" src="/mdx-assets/knowledge-base/memories/create_memory_07.webm"/>
+
+
+Now you can view the chunked files content by clicking on the uploaded memory.
+
+## Searching memories
+
+You can perform a vector search on the memories by clicking the `Ask a question` button.
+
+![Image](/mdx-assets/knowledge-base/memories/memory_search.webp)
+
+#### You can configure the search with:
+- Results limit
+- Tokens limit
+- Extend neighbors
+- Extend parents
