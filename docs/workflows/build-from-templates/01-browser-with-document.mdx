@@ -1,0 +1,47 @@
+---
+title: Browser with document search
+description: Workflow that uses browser, and document search to store and retrieve browser results
+---
+
+import { Video } from "/src/components/Video";
+
+# Browser with document search
+
+## Used blocks
+* [Text Input](/docs/blocks/text_input)
+* [Chat](/docs/blocks/chat)
+* [Browser](/docs/blocks/browser)
+* [Document Search](/docs/blocks/document_search)
+* [Text Output](/docs/blocks/text_output)
+
+:::tip
+Before start, make sure you understand how workflows and knowledge bases work.
+We highly recommend [Create first Workflow](/docs/guides/create-first-workflow) and [Knowledge Base](/docs/guides/knowledge-base) guides
+:::
+
+## Workflow setup
+
+Let's create a workflow that uses browser to search for information and document search to store and retrieve browser results.
+
+1. Drag and drop the required blocks to the canvas
+2. Connect and configure the blocks as shown in the video below
+3. Press **Run** button in top left corner
+
+#### Chat system message:
+```
+You are a helpful assistant.
+
+USE DOCUMENT SEARCH TO ANSWER QUESTIONS.
+
+ONLY IF YOU DO NOT FIND THE ANSWER, USE BROWSER TOOL.
+```
+
+<Video type="video/webm" src="/mdx-assets/workflows/templates/browser_with_document_07.webm"/>
+
+## Usage
+
+1. Type a question in the text input
+2. The workflow will search for the answer in the knowledge base and if not found, it will use the browser to search for the answer.
+3. The next time you ask similar question, the workflow will use the document search to retrieve the answer.
+
+<Video type="video/webm" src="/mdx-assets/workflows/templates/browser_demo_07.webm"/>
