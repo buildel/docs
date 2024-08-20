@@ -1,0 +1,153 @@
+---
+sidebar_position: 6
+---
+
+import {LANDING_PAGE_URL, DISCORD_URL} from '../utils/urls'
+
+
+# Self-hosted
+
+A getting started guide to self-hosting Buildel.
+
+## Install
+
+Buildel is designed to be self-hosted through Docker. This guide will walk you through the process of setting up Buildel on your own server using Docker Compose.
+
+:::tip
+
+This guide uses Docker Compose example to simplify the process. In a production environment, you should consider a more advanced setup.
+We recommend hosting Buildel on Fly.io as it works well with Elixir applications.
+
+:::
+
+To install Buildel, you need to have Docker and Docker Compose installed on your machine.
+If you don't have them, you can install them by following the instructions on the [Docker website](https://docs.docker.com/get-docker/).
+
+## Quick start
+
+To get started, clone the [Buildel](https://github.com/elpassion/buildel) repository from GitHub.
+    
+```bash
+git clone https://github.com/elpassion/buildel buildel
+```
+
+In the downloaded directory, navigate to the `self-hosting` folder. It contains:
+- `docker-compose.yml` - the Docker Compose configuration file with all necessary services
+- `init-database.sql` - the SQL script to initialize the database
+- `postgresql.conf` - the PostgreSQL configuration file
+
+Open the `docker-compose.yml` file, under the `api` service, you'll see the `environment` section.
+Let's generate the values for `SECRET_KEY_BASE` and `ENCRYPTION_KEY` variables and replace them in the `docker-compose.yml` file.
+
+```bash
+# SECRET_KEY_BASE
+openssl rand -base64 48
+
+# ENCRYPTION_KEY
+openssl rand -base64 32
+```
+
+Now you can start the Buildel services using Docker Compose.
+
+:::info
+
+On the first run, you might need to comment out the `postgresql.conf` volume in the `docker-compose.yml` file to initialize the database.
+
+:::
+
+```bash
+docker-compose up
+```
+
+
+## Env variables
+
+Here're the currently supported ENV vars:
+
+### API
+
+#### DATABASE_URL (required)
+
+The URL to the PostgreSQL database.
+
+#### SECRET_KEY_BASE (required)
+
+A secret key used as a base to generate secrets for encrypting and signing data. For example, cookies and tokens are signed by default, but they may also be encrypted if desired.
+
+#### ENCRYPTION_KEY (required)
+
+A Vault key used to encrypt data.
+
+#### LOG_LEVEL (optional)
+
+The level of logging.
+
+#### ECTO_IPV6 (optional)
+
+Whether to use IPv6 for the database connection.
+
+#### POOL_SIZE (optional)
+
+The number of database connections to keep in the pool. The default is 10.
+
+#### PHX_HOST (required)
+
+The host to bind the Phoenix server to.
+
+#### PORT (required)
+
+The port to bind the Phoenix server to.
+
+#### NLM_API_URL (required)
+
+The URL to the NLM API service.
+
+#### PAGE_URL (required)
+
+The URL to the web service.
+
+#### SENTRY_DSN (optional)
+
+The DSN for Sentry error tracking.
+
+#### SKIP_FLAME (optional)
+
+Whether to disable Knowledge base graph generation.
+
+#### FLY_API_TOKEN (optional)
+
+The Fly.io API token. Required if Flame is enabled.
+
+### Web
+
+#### API_URL (required)
+
+The URL to the API service.
+
+#### PAGE_URL (required)
+
+The URL to the web service.
+
+#### SENTRY_DSN (optional)
+
+The DSN for Sentry error tracking.
+
+#### SESSION_SECRET (required)
+
+A secret key used to sign the session cookie.
+
+#### GOOGLE_CLIENT_ID (required)
+
+The Google OAuth client ID.
+
+#### GOOGLE_CLIENT_SECRET (required)
+
+The Google OAuth client secret.
+
+#### GOOGLE_REDIRECT_URI (required)
+
+The Google OAuth redirect URI.
+
+## Join our Community
+
+If you're curious or have any questions about Buildel, feel free to reach out to our community on <a href={DISCORD_URL} target="__blank">Discord</a>.
