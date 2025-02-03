@@ -1,0 +1,29 @@
+---
+title: OpenAI API
+sidebar_position: 6
+---
+
+
+
+### Connect to our custom API
+
+Ensure you replace the baseURL with our API's URL and include your API key as the bearer token in the Authorization header.
+
+This setup will authenticate your requests and allow your chatbot to communicate with our API.
+
+```tsx title="index.tsx"
+import OpenAI from "openai";
+
+const openai = new OpenAI({
+  baseURL: "https://buildel-api.fly.dev/api",
+  defaultHeaders: { Authorization: 'Bearer ' + process.env.BUILDEL_API_KEY},
+};
+
+const completion = await openai.chat.completions.create({
+  messages: [{ role: "system", content: "You are a helpful assistant." }],
+  model: "gpt-3.5-turbo",
+});
+
+console.log(completion.choices[0]);
+```
+

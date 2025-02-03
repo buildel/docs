@@ -1,0 +1,74 @@
+---
+title: Http API
+sidebar_position: 3
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+The HTTP API allows for direct communication with Buildel through RESTful endpoints. It provides full control over workflow execution and data exchange.
+
+## Create a new run
+
+To create a new run, send a POST request to the runs endpoint of our API. Optionally the request can include additional metadata object, which contains any data you will need later inside of the run. By default metadata is empty. Also you can specify an alias for the run, which will be used. By default alias is 0 ~ latest.
+
+```bash title=""
+curl https://buildel-api.fly.dev/api/organizations/2/pipelines/591/runs \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer ${BUILDEL_API_KEY}" \
+  -d '{"metadata": {"userId": 123}, "alias": 0}'
+```
+## Start the run
+
+Once the run is created, you can start it by sending a POST request to the start endpoint of our API. This will trigger the start of run. From this point, the run will be in progress and you can interact with it.
+
+```bash title=""
+curl https://buildel-api.fly.dev/api/organizations/2/pipelines/591/runs/RUN_ID/start \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer ${BUILDEL_API_KEY}"
+```
+
+## Start the run and wait for outputs
+
+You can optionally wait for the outputs of the run by specifying the blocks you want to wait for. This will make the API call wait until the specified outputs return a value.
+
+You can also pass initial inputs to the run. It's useful when you want to pass some data to the blocks immediately after the run starts.
+
+```bash title=""
+curl https://buildel-api.fly.dev/api/organizations/2/pipelines/591/runs/RUN_ID/start \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer ${BUILDEL_API_KEY}"
+  -d '{
+    "wait_for_outputs": [
+      { "block_name": "BLOCK_NAME (e.g. text_output_1)", "output_name": "output" }
+    ],
+    "initial_inputs": [
+      { "block_name": "BLOCK_NAME (e.g. text_input_1)", "input_name": "input", "data": YOUR_DATA }
+    ]
+  }'
+```
+
+## Input data to the run
+
+To input data to the run, send a POST request to the input endpoint of our API. This will trigger the input of data to the run. You can interact with all public inputs of the run. You can input data to the run only if it is in progress
+
+```bash title=""
+curl https://buildel-api.fly.dev/api/organizations/2/pipelines/591/runs/RUN_ID/input \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer ${BUILDEL_API_KEY}" \
+  -d '{"block_name": "text_input_1", "input_name": "input", "data": "Content"}'
+```
+## Stop the run
+
+To stop the run, send a POST request to the stop endpoint of our API. This will trigger the stop of run. From this point, the run will be stopped and you can't interact with it anymore.
+
+```bash title=""
+curl https://buildel-api.fly.dev/api/organizations/2/pipelines/591/runs/RUN_ID/stop \
+  -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer ${BUILDEL_API_KEY}"
+```
